@@ -14,5 +14,50 @@
         </div>
         <div class="header-text">LET'S SOPT 38</div>
     </header>
+
+    <section class="search-filter">
+        <h3>검색 필터</h3>
+        <div class="filter-container">
+            <div class="filter-item">
+                <label for="search-title">제목</label>
+                <input type="text" id="search-title" placeholder="내역을 입력하세요">
+            </div>
+            <div class="filter-item">
+                <label for="select-type">유형</label>
+                <select id="select-type">
+                    <option value="all" selected>전체</option>
+                    <option value="income">수입</option>
+                    <option value="expense">지출</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="select-category">카테고리</label>
+                <select id="select-category">
+                    <option value="all" selected>전체</option>
+                    <option value="food">식비</option>
+                    <option value="salary">월급</option>
+                    <option value="culture">문화</option>
+                    <option value="traffic">교통</option>
+                    <option value="life">생활</option>
+                    <option value="etc">기타</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="select-payment">결제 수단</label>
+                <select id="select-payment">
+                    <option value="all" selected>전체</option>
+                    <option value="credit">신용카드</option>
+                    <option value="debit">체크카드</option>
+                    <option value="cash">현금</option>
+                    <option value="etc">기타</option>
+                </select>
+            </div>
+            <div class="filter-buttons">
+                <button type="button" class="btn-apply">적용</button>
+                <button type="reset" class="btn-reset">초기화</button>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>

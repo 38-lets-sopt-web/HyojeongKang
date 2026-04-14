@@ -1,5 +1,4 @@
 /* 헤더 스타일 */
-
 header {
     display: grid;
     grid-template-columns: repeat(3,1fr);

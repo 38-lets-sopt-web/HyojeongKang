@@ -1,0 +1,54 @@
+.search-filter{
+    margin: 5rem;
+    padding: 1.25rem;
+    border-radius: 20px;
+    background-color: #f6f6f6;
+}
+
+.search-filter h4 {
+    margin: 0 0 1rem 0;
+}
+
+.filter-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.filter-item:nth-child(1){
+    grid-column:  1 / 4;
+}
+
+.filter-buttons{
+    grid-column: 1 / 4;
+    display: flex;
+    gap : 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.filter-buttons button {
+    flex: 1;
+    padding: 10px;
+    background-color: black;
+    color: #f0f8ff;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+
+.filter-item {
+  display: flex;       
+  align-items: center; 
+  gap: 1rem;           
+}
+
+.filter-item input, 
+.filter-item select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.filter-item label{
+    font-weight: bold;
+}
