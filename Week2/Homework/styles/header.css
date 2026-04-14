@@ -1,0 +1,18 @@
+/* 헤더 스타일 */
+
+header {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    text-align: center;
+    background-color: rgb(34, 34, 41);
+    color: white;
+}
+
+body {
+    margin: 0;
+}
+
+.header-icon {
+    font-size: 1.4rem;
+}
