@@ -10,6 +10,12 @@ function init(){
 
 document.addEventListener('DOMContentLoaded', init);
 
+// 아이콘 클릭 시 페이지 새로고침
+const headerIcon = document.querySelector('.header-icon');
+headerIcon.addEventListener('click', () => {
+    location.reload(); 
+});
+
 // 선택 삭제
 const deleteBtn = document.querySelector('.delete-selected');
 
