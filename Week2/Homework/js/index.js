@@ -1,5 +1,6 @@
 import { expenses } from "./expense_data.js";
 import { renderExpenseList } from "./render.js";
+import { getFilteredData } from "./filter.js";
 
 let currentData = JSON.parse(localStorage.getItem("expenseData")) || expenses;
 
@@ -50,3 +51,20 @@ function deleteItems(data){
     localStorage.setItem("expenseData", JSON.stringify(currentData));
     renderExpenseList(currentData); // 업데이트
 }
+
+// 필터링 적용
+const applyBtn = document.querySelector('.btn-apply');
+applyBtn.addEventListener('click', () => {
+    const filtered = getFilteredData(currentData);
+    renderExpenseList(filtered);
+})
+
+// 초기화 버튼
+const resetBtn = document.querySelector('.btn-reset');
+resetBtn.addEventListener('click', () => {
+    document.querySelector('#search-title').value = '';
+    document.querySelector('#select-type').value = 'all';
+    document.querySelector('#select-category').value = 'all';
+    document.querySelector('#select-payment').value = 'all';
+    renderExpenseList(currentData);
+})
