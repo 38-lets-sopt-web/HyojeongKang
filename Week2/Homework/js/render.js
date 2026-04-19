@@ -14,11 +14,13 @@ export function renderExpenseList(data){
         const tr = document.createElement('tr'); 
 
         const amountStyle = item.amount < 0 ? 'color:red' : 'color:blue'; 
+        const amountSign = item.amount > 0 ? '+' : '';
+        const formattedAmount = `${item.amount.toLocaleString()}`;
 
         tr.innerHTML = `
             <td><input type="checkbox" value="${item.id}"></td>
             <td>${item.title}</td>
-            <td style="${amountStyle}">${item.amount}</td>
+            <td style="${amountStyle}">${amountSign}${formattedAmount}</td>
             <td>${item.date}</td>
             <td>${item.category}</td>
             <td>${item.payment}</td>
@@ -28,9 +30,9 @@ export function renderExpenseList(data){
 
     });
     
-    // 금액 앞 +/- 기호 적용, 구분에 따른 색상 적용
+    // 합계 금액 앞 +/- 기호 적용, 구분에 따른 색상 적용
     totalAmount.style.color = total < 0 ? 'red' : 'blue';
-    const displayTotal = total > 0 ? `+${total}` : total;
-    totalAmount.textContent = `${displayTotal}원`
+    const totalSign = total > 0 ? `+` : '';
+    totalAmount.textContent = `${totalSign}${total.toLocaleString()}원`;
 
 }

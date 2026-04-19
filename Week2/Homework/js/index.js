@@ -22,12 +22,12 @@ const deleteBtn = document.querySelector('.delete-selected');
 
 deleteBtn.addEventListener('click', () => {
     // 체크된 체크박스 모두 가져오기
-    const checkedBoxes = document.querySelectorAll('.expense-list-body input[type="checkbox"]:checked');
+    const checkedboxes = document.querySelectorAll('.expense-list-body input[type="checkbox"]:checked');
     
     const isConfirmed = confirm(`정말 삭제하시겠습니까?`)
     if (isConfirmed){
         // 체크 박스 아이디 -> 배열
-        const idToDelete = Array.from(checkedBoxes).map(cb => Number(cb.value));
+        const idToDelete = Array.from(checkedboxes).map(cb => Number(cb.value));
         deleteItems(idToDelete);
     }
 });
@@ -67,4 +67,30 @@ resetBtn.addEventListener('click', () => {
     document.querySelector('#select-category').value = 'all';
     document.querySelector('#select-payment').value = 'all';
     renderExpenseList(currentData);
+})
+
+// 체크박스 모두 선택
+const checkAll = document.querySelector('#check-all');
+checkAll.addEventListener('change', (event) => {
+    const isChecked = event.target.checked;
+    const checkboxes = document.querySelectorAll('.expense-list-body input[type="checkbox"]');
+
+    for (let box of checkboxes){
+        box.checked = isChecked;
+    }
+
+})
+
+// 날짜 정렬
+const sortDate = document.querySelector('#sort-date');
+sortDate.addEventListener('change', (event) => {
+    const sortValue = document.querySelector('#sort-date').value;
+    let sortedDate;
+
+    if (sortValue === 'latest'){
+        sortedDate = [...currentData].sort((a,b) => new Date(b.date) - new Date(a.date));
+    } else {
+        sortedDate = [...currentData].sort((a,b) => new Date(a.date) - new Date(b.date));
+    }
+    renderExpenseList(sortedDate);
 })
