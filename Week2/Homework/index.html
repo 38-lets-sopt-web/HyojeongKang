@@ -92,7 +92,64 @@
             </tfoot>
         </table>
     </section>
+    <div class="modal-container">
+        <div class="add-modal">
 
+            <div class="modal-header">
+                <h3>내역 추가</h3>
+                <button type="button" class="btn-close">&times;</button>
+            </div>
+
+            <div class="full">
+                <label for="add-title">제목</label>
+                <input type="text" id="add-title" placeholder="제목을 입력하세요">
+            </div>
+            
+            <div class="input">
+                <label for="add-type">유형</label>
+                <select id="add-type">
+                    <option value="income">지출(-)</option>
+                    <option value="expense">수입(+)</option>
+                </select>
+            </div>
+            
+            <div class="input">
+                <label for="add-amount">금액(숫자만)</label>
+                <input type="text" id="add-amount" placeholder="금액을 입력하세요">
+            </div>
+
+            <div class="full">
+                <label for="add-date">날짜</label>
+                <input type="date" id="add-date">
+            </div>
+
+            <div class="input">
+                <label for="add-category">카테고리</label>
+                <select id="add-category">
+                    <option value="select">선택</option>
+                    <option value="식비">식비</option>
+                    <option value="월급">월급</option>
+                    <option value="문화">문화</option>
+                    <option value="교통">교통</option>
+                    <option value="생활">생활</option>
+                    <option value="기타">기타</option>
+                </select>
+            </div>
+
+            <div class="input">
+                <label for="add-payment">결제 수단</label>
+                <select id="add-payment">
+                    <option value="select">선택</option>
+                    <option value="신용카드">신용카드</option>
+                    <option value="체크카드">체크카드</option>
+                    <option value="현금">현금</option>
+                    <option value="기타">기타</option>
+                </select>
+            </div>
+            
+            <button type="button" class="add-btn">추가</button>
+        </div>
+    </div>
     <script type="module" src="./js/index.js"></script>
 </body>
 </html>
