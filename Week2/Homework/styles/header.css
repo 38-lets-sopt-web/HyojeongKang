@@ -1,16 +1,24 @@
-/* 헤더 스타일 */
+:root {
+    /* 페이지 배경 및 레이아웃 */
+    --bg-page: rgb(246, 249, 251);      
+    --bg-header: #01142b;      
+    
+    /* 텍스트 색상 */
+    --text-white: #ffffff;
+}
+
 header {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     align-items: center;
     text-align: center;
-    background-color: rgb(34, 34, 41);
-    color: white;
+    background-color: var(--bg-header);
+    color: var(--text-white);
 }
 
 body {
     margin: 0;
-    background-color: rgb(232, 232, 232);
+    background-color: var(--bg-page);
 }
 
 .header-icon {

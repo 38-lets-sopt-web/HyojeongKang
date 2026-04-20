@@ -1,8 +1,24 @@
+:root {
+    /* 배경 및 그림자 */
+    --bg-card: #ffffff;
+    --bg-button: #01142b;
+    --shadow-box: rgba(0, 0, 0, 0.05);
+    
+    /* 텍스트 */
+    --text-button: #f0f8ff;
+    
+    /* 테두리 설정 */
+    --border-color: #000000;    
+    --border-width: 1.5px;
+
+}
+
 .search-filter{
     margin: 1rem 5rem;
     padding: 1.25rem;
+    background-color: var(--bg-card);
     border-radius: 20px;
-    background-color: #ffffff;
+    box-shadow: 0 4px 12px var(--shadow-box);
 }
 
 .search-filter h4 {
@@ -29,8 +45,9 @@
 .filter-buttons button {
     flex: 1;
     padding: 10px;
-    background-color: black;
-    color: #f0f8ff;
+    background-color: var(--bg-button);
+    color: var(--text-button);
+    border: none;
     border-radius: 8px;
     font-weight: bold;
 }
@@ -47,6 +64,7 @@
     flex: 1;
     padding: 10px;
     border-radius: 8px;
+    border: var(--border-width) solid var(--border-light);
 }
 
 .filter-item label{

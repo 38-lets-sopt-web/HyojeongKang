@@ -6,7 +6,7 @@ export const expenses = [
     category: '식비',
     payment: '신용카드',
     amount: -4500,
-  },
+  }, 
   {
     id: 2,
     title: '과외비 입금',
