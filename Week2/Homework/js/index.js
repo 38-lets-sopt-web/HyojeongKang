@@ -2,6 +2,7 @@ import { expenses } from "./expense_data.js";
 import { renderExpenseList } from "./render.js";
 import { getFilteredData } from "./filter.js";
 import { openAddModal, closeAddModal, newExpenseData } from "./addModal.js";
+import { openDetailModal } from "./detailModal.js";
 
 let currentData = JSON.parse(localStorage.getItem("expenseData")) || expenses;
 
@@ -130,3 +131,17 @@ submitBtn.addEventListener('click', () => {
     closeAddModal();
 
 })
+
+// 상세 내역 모달 닫기
+const detailModal = document.querySelector('.detail-modal-container');
+const detailCloseBtn = detailModal.querySelector('.btn-close'); 
+
+detailCloseBtn.addEventListener('click', () => {
+    detailModal.style.display = 'none';
+});
+
+detailModal.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+        detailModal.style.display = 'none';
+    }
+});

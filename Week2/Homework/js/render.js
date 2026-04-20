@@ -1,3 +1,5 @@
+import { openDetailModal } from "./detailModal.js";
+
 export function renderExpenseList(data){
     const listBody = document.querySelector('.expense-list-body');
     const totalAmount = document.querySelector('.total-amount');
@@ -19,12 +21,18 @@ export function renderExpenseList(data){
 
         tr.innerHTML = `
             <td><input type="checkbox" value="${item.id}"></td>
-            <td>${item.title}</td>
+            <td class="title-cell">${item.title}</td>
             <td style="${amountStyle}">${amountSign}${formattedAmount}</td>
             <td>${item.date}</td>
             <td>${item.category}</td>
             <td>${item.payment}</td>
         `;
+
+        const titleCell = tr.querySelector('.title-cell');
+
+        titleCell.addEventListener('click', () => {
+            openDetailModal(item);
+        })
 
         listBody.appendChild(tr);
 
