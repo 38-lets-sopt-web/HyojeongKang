@@ -5,6 +5,7 @@
 
     /* 텍스트 및 버튼 */
     --text-on-dark: #f0f8ff;
+    --text-point: #00a2ff;
     --btn-bg: #01142b;
 
     /* 경계선 */
@@ -53,4 +54,12 @@
   padding: 12px 8px;
   text-align: center;
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.title-cell{
+    text-decoration: underline;
+}
+.title-cell:hover {
+    cursor: pointer;           
+    color: var(--text-point);
 }
