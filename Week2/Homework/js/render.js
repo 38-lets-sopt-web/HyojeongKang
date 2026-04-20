@@ -28,8 +28,8 @@ export function renderExpenseList(data){
             <td>${item.payment}</td>
         `;
 
+        // 상세 내용 모달 오픙
         const titleCell = tr.querySelector('.title-cell');
-
         titleCell.addEventListener('click', () => {
             openDetailModal(item);
         })

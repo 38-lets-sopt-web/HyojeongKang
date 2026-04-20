@@ -23,8 +23,14 @@ headerIcon.addEventListener('click', () => {
 const deleteBtn = document.querySelector('.delete-selected');
 
 deleteBtn.addEventListener('click', () => {
-    // 체크된 체크박스 모두 가져오기
+    
     const checkedboxes = document.querySelectorAll('.expense-list-body input[type="checkbox"]:checked');
+    
+    // 예외 처리 : 체크된 항목이 없을 경우
+    if (checkedboxes.length === 0) {
+        alert("삭제할 항목을 선택해주세요!");
+        return;
+    }
     
     const isConfirmed = confirm(`정말 삭제하시겠습니까?`)
     if (isConfirmed){
