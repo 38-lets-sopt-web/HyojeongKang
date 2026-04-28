@@ -1,20 +1,4 @@
-:root {
-    /* 배경 및 오버레이 */
-    --modal-overlay: rgba(0, 0, 0, 0.5);
-    --modal-bg: #ffffff;
-    
-    /* 버튼 및 포인트 */
-    --btn-primary-bg: #01142b;
-    --btn-primary-text: #ffffff;
-    --btn-close-color: #999999;
-    
-    /* 폼 요소 및 텍스트 */
-    --input-border: #dddddd;
-    --label-text: #555555;
-    --input-text: #333333; 
-
-}
-
+/* 내역 추가 모달 스타일 */
 .modal-container {
     display: none;
     position: fixed;
@@ -22,7 +6,7 @@
     background: var(--modal-overlay);
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: var(--z-modal);
 }
 
 .modal-header {
@@ -46,18 +30,20 @@
 .add-modal {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px; 
-    background: var(--modal-bg);
+    gap: 5px;
+    background: var(--bg-card);
     padding: 30px;
     border-radius: 16px;
     width: 420px;
 }
 
-.add-modal h4, .full {
+.add-modal h4,
+.field-full {
     grid-column: span 2;
 }
 
-.full, .input {
+.field-full,
+.field-col {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -65,18 +51,19 @@
 
 label {
     font-size: 0.85rem;
-    font-weight: bold;
-    color: var(--label-text);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-muted);
 }
 
-.add-modal input, .add-modal select {
+.add-modal input,
+.add-modal select {
     padding: 10px;
-    border: 1px solid var(--input-border);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     font-size: 0.95rem;
     width: 100%;
     box-sizing: border-box;
-    color: var(--input-text);
+    color: var(--text-input);
 }
 
 .add-btn {
@@ -85,7 +72,7 @@ label {
     margin-top: 8px;
     padding: 8px;
     background-color: var(--btn-primary-bg);
-    color: var(--btn-primary-text);
+    color: var(--text-on-dark);
     border: none;
     border-radius: 8px;
     font-weight: bold;

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/index.css">
     <title>가계부</title>
 </head>
+
 <body>
     <header>
-        <div class="header-icon">🤑</div>
+        <button class="header-icon">🤑</button>
         <div class="header-title">
             <h3>효정's 가계부</h3>
         </div>
@@ -100,30 +102,30 @@
                 <button type="button" class="btn-close">&times;</button>
             </div>
 
-            <div class="full">
+            <div class="field-full">
                 <label for="add-title">제목</label>
                 <input type="text" id="add-title" placeholder="제목을 입력하세요">
             </div>
-            
-            <div class="input">
+
+            <div class="field-col">
                 <label for="add-type">유형</label>
                 <select id="add-type">
                     <option value="expense">지출(-)</option>
                     <option value="income">수입(+)</option>
                 </select>
             </div>
-            
-            <div class="input">
-                <label for="add-amount">금액(숫자만)</label>
-                <input type="text" id="add-amount" placeholder="금액을 입력하세요">
+
+            <div class="field-col">
+                <label for="add-amount">금액</label>
+                <input type="number" id="add-amount" placeholder=" 금액을 입력하세요" min="0">
             </div>
 
-            <div class="full">
+            <div class="field-full">
                 <label for="add-date">날짜</label>
                 <input type="date" id="add-date">
             </div>
 
-            <div class="input">
+            <div class="field-col">
                 <label for="add-category">카테고리</label>
                 <select id="add-category">
                     <option value="select">선택</option>
@@ -136,7 +138,7 @@
                 </select>
             </div>
 
-            <div class="input">
+            <div class="field-col">
                 <label for="add-payment">결제 수단</label>
                 <select id="add-payment">
                     <option value="select">선택</option>
@@ -146,14 +148,14 @@
                     <option value="기타">기타</option>
                 </select>
             </div>
-            
+
             <button type="button" class="add-btn">추가</button>
         </article>
     </div>
-    
+
     <div class="detail-modal-container">
         <article class="modal-detail">
-            
+
             <div class="modal-header">
                 <h3>항목 상세</h3>
                 <button type="button" class="btn-close">&times;</button>
@@ -193,4 +195,5 @@
     </div>
     <script type="module" src="./js/index.js"></script>
 </body>
+
 </html>
