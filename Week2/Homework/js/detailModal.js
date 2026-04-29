@@ -12,6 +12,19 @@ export function openDetailModal(item) {
         amount.textContent = `${numAmount.toLocaleString()}원`;
         amount.style.color = numAmount > 0 ? 'blue' : 'red';
     }
-    
-    modalContainer.style.display = 'flex';
+
+    modalContainer.classList.remove('hidden');
 }
+
+const detailModal = document.querySelector('.detail-modal-container');
+const detailCloseBtn = detailModal.querySelector('.btn-close');
+
+detailCloseBtn.addEventListener('click', () => {
+    detailModal.classList.add('hidden');
+});
+
+detailModal.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+        detailModal.classList.add('hidden');
+    }
+});

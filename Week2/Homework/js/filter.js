@@ -9,23 +9,16 @@ export function getFilteredData(data) {
     for (const item of data) {
         // 제목 확인
         const isTitleOk = item.title.includes(searchTitle);
-        
+
         // 유형(수입/지출) 확인
-        let isTypeOk = true;
-        if (selectType === 'income') {
-            if (item.amount > 0) {
-                isTypeOk = true;
-            } else {
-                isTypeOk = false;
+        const isTypeOk = (() => {
+            switch (selectType) {
+                case 'all': return true;
+                case 'income': return item.amount > 0;
+                case 'expense': return item.amount < 0;
+                default: return false;
             }
-        } 
-        else if (selectType === 'expense') {
-            if (item.amount < 0) {
-                isTypeOk = true;
-            } else {
-                isTypeOk = false;
-            }
-        }
+        })();
 
         // 카테고리 확인
         const isCategoryOk = (selectCategory === 'all') || (item.category === selectCategory);

@@ -1,12 +1,16 @@
 /* 상세 내역 모달 스타일 */
 .detail-modal-container {
-    display: none;
+    display: flex;
     position: fixed;
     inset: 0;
     background: var(--modal-overlay);
     justify-content: center;
     align-items: center;
     z-index: var(--z-modal);
+}
+
+.detail-modal-container.hidden {
+    display: none;
 }
 
 .modal-detail {

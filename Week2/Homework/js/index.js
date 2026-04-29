@@ -1,13 +1,13 @@
 import { expenses } from "./expense_data.js";
 import { renderExpenseList } from "./render.js";
 import { getFilteredData } from "./filter.js";
-import { openAddModal, closeAddModal, newExpenseData } from "./addModal.js";
+import { openAddModal, closeAddModal, newExpenseData, initAddModal } from "./addModal.js";
 import { openDetailModal } from "./detailModal.js";
 
 let currentData = JSON.parse(localStorage.getItem("expenseData")) || expenses;
 
 // 초기 화면 
-function init(){
+function init() {
     renderExpenseList(currentData);
 }
 
@@ -16,45 +16,33 @@ document.addEventListener('DOMContentLoaded', init);
 // 아이콘 클릭 시 페이지 새로고침
 const headerIcon = document.querySelector('.header-icon');
 headerIcon.addEventListener('click', () => {
-    location.reload(); 
+    location.reload();
 });
 
 // 선택 삭제
 const deleteBtn = document.querySelector('.delete-selected');
 
 deleteBtn.addEventListener('click', () => {
-    
+
     const checkedboxes = document.querySelectorAll('.expense-list-body input[type="checkbox"]:checked');
-    
+
     // 예외 처리 : 체크된 항목이 없을 경우
     if (checkedboxes.length === 0) {
         alert("삭제할 항목을 선택해주세요!");
         return;
     }
-    
+
     const isConfirmed = confirm(`정말 삭제하시겠습니까?`)
-    if (isConfirmed){
+    if (isConfirmed) {
         // 체크 박스 아이디 -> 배열
-        const idToDelete = Array.from(checkedboxes).map(cb => Number(cb.value));
+        const idToDelete = [...checkedboxes].map(cb => Number(cb.value));
         deleteItems(idToDelete);
     }
 });
 
 // 삭제 함수
-function deleteItems(data){
-
-    let remainingExpenses = [];
-
-    for (let item of currentData) {
-       
-        const isTarget = data.includes(item.id);
-
-        if (isTarget === false) {
-            remainingExpenses.push(item);
-        }
-    }
-    currentData = remainingExpenses;
-
+function deleteItems(data) {
+    currentData = currentData.filter(item => !data.includes(item.id));
     // 로컬 스토리지에도 저장 (새로고침해도 유지되도록)
     localStorage.setItem("expenseData", JSON.stringify(currentData));
     renderExpenseList(currentData); // 업데이트
@@ -83,71 +71,27 @@ checkAll.addEventListener('change', (event) => {
     const isChecked = event.target.checked;
     const checkboxes = document.querySelectorAll('.expense-list-body input[type="checkbox"]');
 
-    for (let box of checkboxes){
-        box.checked = isChecked;
-    }
+    [...checkboxes].forEach(box => box.checked = isChecked);
 
 })
 
 // 날짜 정렬
 const sortDate = document.querySelector('#sort-date');
 sortDate.addEventListener('change', (event) => {
-    const sortValue = document.querySelector('#sort-date').value;
-    let sortedDate;
+    const sortValue = event.target.value;
 
-    if (sortValue === 'latest'){
-        sortedDate = [...currentData].sort((a,b) => new Date(b.date) - new Date(a.date));
-    } else {
-        sortedDate = [...currentData].sort((a,b) => new Date(a.date) - new Date(b.date));
-    }
+    const sortedDate = [...currentData].sort((a, b) =>
+        sortValue === 'latest'
+            ? new Date(b.date) - new Date(a.date)
+            : new Date(a.date) - new Date(b.date)
+    );
+
     renderExpenseList(sortedDate);
 })
 
-// 내역 추가 모달 열기
-const addOpenBtn = document.querySelector('.add-expense');
-addOpenBtn.addEventListener('click', openAddModal);
 
-// 내역 추가 모달 닫기
-const modalCloseBtn = document.querySelector('.btn-close');
-modalCloseBtn.addEventListener('click', closeAddModal);
-
-// 백드롭 클릭 시 닫기
-const backdrop = document.querySelector('.modal-container');
-backdrop.addEventListener('click', (event) => {
-    // 실제로 클릭된 요소(target)가 백드롭(currentTarget)일 때만 실행
-    if (event.target === event.currentTarget) {
-        closeAddModal();
-    }
-});
-
-// 내역 추가 버튼 클릭시
-const submitBtn = document.querySelector('.add-btn');
-submitBtn.addEventListener('click', () => {
-    const newData = newExpenseData();
-
-    if(!newData.title || !newData.date || !newData.category || !newData.payment || !newData.amount){
-        alert("내용을 모두 입력해주세요");
-        return;
-    }
-
+initAddModal((newData) => {
     currentData.push(newData);
     localStorage.setItem('expenseData', JSON.stringify(currentData));
     renderExpenseList(currentData);
-
-    closeAddModal();
-
-})
-
-// 상세 내역 모달 닫기
-const detailModal = document.querySelector('.detail-modal-container');
-const detailCloseBtn = detailModal.querySelector('.btn-close'); 
-
-detailCloseBtn.addEventListener('click', () => {
-    detailModal.style.display = 'none';
-});
-
-detailModal.addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        detailModal.style.display = 'none';
-    }
 });
