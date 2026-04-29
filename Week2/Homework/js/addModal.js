@@ -1,3 +1,6 @@
+import { renderExpenseList } from "./render.js";
+import { addItem, getCurrentData } from "./store.js";
+
 const modalContainer = document.querySelector('.modal-container');
 const modalCloseBtn = modalContainer.querySelector('.btn-close');
 
@@ -6,9 +9,18 @@ export function openAddModal() {
 }
 export function closeAddModal() {
     modalContainer.classList.add('hidden');
+
+    // 입력값 초기화
+    document.querySelector('#add-title').value = '';
+    document.querySelector('#add-type').value = 'expense';
+    document.querySelector('#add-amount').value = '';
+    document.querySelector('#add-date').value = '';
+    document.querySelector('#add-category').value = 'select';
+    document.querySelector('#add-payment').value = 'select';
 }
 
 export function newExpenseData() {
+    const data = getCurrentData();
     const titleValue = document.querySelector('#add-title').value;
     const typeValue = document.querySelector('#add-type').value;
     const amountValue = document.querySelector('#add-amount').value;
@@ -19,7 +31,7 @@ export function newExpenseData() {
     const finalAmount = typeValue === 'expense' ? -Number(amountValue) : Number(amountValue);
 
     return {
-        id: Date.now(),
+        id: data.length > 0 ? data[data.length - 1].id + 1 : 1,
         title: titleValue,
         type: typeValue,
         amount: finalAmount,
@@ -41,17 +53,18 @@ modalContainer.addEventListener('click', (event) => {
     }
 });
 
-export function initAddModal(onSubmit) {
+export function initAddModal() {
     const submitBtn = document.querySelector('.add-btn');
     submitBtn.addEventListener('click', () => {
         const newData = newExpenseData();
 
-        if (!newData.title || !newData.date || !newData.category || !newData.payment || !newData.amount) {
+        if (!newData.title || !newData.date || !newData.amount || newData.category === 'select' || newData.payment === 'select') {
             alert("내용을 모두 입력해주세요");
             return;
         }
 
-        onSubmit(newData);
+        addItem(newData);
+        renderExpenseList(getCurrentData());
         closeAddModal();
     });
 }
