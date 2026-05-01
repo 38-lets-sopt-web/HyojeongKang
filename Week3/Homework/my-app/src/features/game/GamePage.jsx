@@ -3,6 +3,7 @@ import * as S from './Game.styles.js';
 import GameSidebar from './components/GameSidebar/GameSidebar.jsx';
 import GameBoard from './components/GameBoard/GameBoard.jsx';
 import { LEVEL_CONFIG } from './constants/levelConfig.js';
+import Modal from '../../components/Modal/Modal.jsx';
 
 // moles 초기화 시 count 기준으로 생성
 const createMoles = (count) => Array.from({ length: count }, () => ({ type: 'hidden', isVisible: false }));
@@ -18,6 +19,8 @@ export default function GamePage() {
     const [timeLeft, setTimeLeft] = useState(LEVEL_CONFIG[1].time);
     const moleTimers = useRef([]);  // 두더지 자동숨김 타이머 목록(cleanup)
     const [level, setLevel] = useState(1);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalCountdown, setModalCountdown] = useState(3);
 
 
     const handleLevelChange = (newLevel) => {
@@ -166,28 +169,57 @@ export default function GamePage() {
 
         localStorage.setItem('ranking', JSON.stringify(updated));
 
-        alert(`게임이 끝났습니다!\n최종 점수: ${score}점`);
+        setIsModalOpen(true);
 
     }, [timeLeft, isPlaying, score, level]);
 
+    // 모달 닫기
+    useEffect(() => {
+        if (!isModalOpen) return;
+
+        setModalCountdown(3);  // 초기화
+
+        const countdown = setInterval(() => {
+            setModalCountdown(prev => prev - 1);
+        }, 1000);
+
+        const close = setTimeout(() => {
+            clearInterval(countdown);
+            setIsModalOpen(false);
+            resetGame();
+        }, 3000);
+
+        return () => {
+            clearInterval(countdown);
+            clearTimeout(close);
+        };
+    }, [isModalOpen]);
 
     return (
-        <S.GameLayout>
-            <GameSidebar
-                timeLeft={timeLeft}
-                score={score}
-                successCount={successCount}
-                failCount={failCount}
-                message={message}
-            />
-            <GameBoard
-                moles={moles}
-                level={level}
-                onLevelChange={handleLevelChange}
-                onMoleClick={handleMoleClick}
-                onStart={handleStart}
-                onStop={handleStop}
-            />
-        </S.GameLayout>
+        <>
+            <S.GameLayout>
+                <GameSidebar
+                    timeLeft={timeLeft}
+                    score={score}
+                    successCount={successCount}
+                    failCount={failCount}
+                    message={message}
+                />
+                <GameBoard
+                    moles={moles}
+                    level={level}
+                    onLevelChange={handleLevelChange}
+                    onMoleClick={handleMoleClick}
+                    onStart={handleStart}
+                    onStop={handleStop}
+                />
+            </S.GameLayout>
+
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <S.ModalTitle>Level {level} 게임 종료!</S.ModalTitle>
+                <S.ModalScore>최종 점수: {score}점</S.ModalScore>
+                <S.ModalResetMessage>{modalCountdown}초 후에 게임이 리셋됩니다.</S.ModalResetMessage>
+            </Modal>
+        </>
     );
 }
