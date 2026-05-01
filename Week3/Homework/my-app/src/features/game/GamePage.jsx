@@ -23,7 +23,7 @@ export default function GamePage() {
     const handleLevelChange = (newLevel) => {
         if (isPlaying) return;        // 이미 진행 중이면 무시
         setLevel(newLevel);
-        resetGame();
+        resetGame(newLevel);
     };
 
     // 초기화 함수
