@@ -22,40 +22,33 @@ export default function GamePage() {
 
     const handleLevelChange = (newLevel) => {
         if (isPlaying) return;        // 이미 진행 중이면 무시
-
         setLevel(newLevel);
-        setMoles(createMoles(LEVEL_CONFIG[newLevel].count));
-        setTimeLeft(LEVEL_CONFIG[newLevel].time);
+        resetGame();
     };
 
-    // 게임 시작
-    const handleStart = () => {
-        if (isPlaying) return;        // 이미 진행 중이면 무시
-
-        const { count, time } = LEVEL_CONFIG[level];
-
-        // 상태 초기화
-        setTimeLeft(time);
-        setScore(0);
-        setSuccessCount(0);
-        setFailCount(0);
-        setMoles(createMoles(count));
-        setIsPlaying(true);
-    };
-
-    // 게임 중단 
-    const handleStop = () => {
-        if (!isPlaying) return;
-
-        const { count, time } = LEVEL_CONFIG[level];
-
-        setIsPlaying(false);
+    // 초기화 함수
+    const resetGame = (lv = level) => {
+        const { count, time } = LEVEL_CONFIG[lv];
         setTimeLeft(time);
         setScore(0);
         setSuccessCount(0);
         setFailCount(0);
         setMoles(createMoles(count));
         setMessage('');
+    };
+
+    // 게임 시작
+    const handleStart = () => {
+        if (isPlaying) return;        // 이미 진행 중이면 무시
+        resetGame();
+        setIsPlaying(true);
+    };
+
+    // 게임 중단 
+    const handleStop = () => {
+        if (!isPlaying) return;
+        resetGame();
+        setIsPlaying(false);
     };
 
     // 랜덤 두더지 등장 함수
