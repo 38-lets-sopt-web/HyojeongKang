@@ -149,25 +149,26 @@ export default function GamePage() {
 
     // 게임 종료 
     useEffect(() => {
-        if (timeLeft === 0 && !isPlaying) return; // 초기값 0 방지 & 초기 마운트 시 실행 방지
-        if (timeLeft === 0) {
-            setIsPlaying(false);
-            setMoles(prev => prev.map(m => ({ ...m, isVisible: false })));
-            setMessage('게임 종료');
+        if (timeLeft !== 0) return;   // 0이 아니면 무시
+        if (!isPlaying) return;       // 게임 중이 아니면 무시 (초기 마운트 방지)
 
-            // 결과 랭킹 저장
-            const newRecord = { level, score, date: new Date().toLocaleString("ko-KR", { timeZone: "UTC" }) };
-            const prev = JSON.parse(localStorage.getItem('ranking') || '[]');
-            const updated = [...prev, newRecord].sort((a, b) => {
-                if (Number(b.level) !== Number(a.level)) return Number(b.level) - Number(a.level);
-                return b.score - a.score;
-            });
+        setIsPlaying(false);
+        setMoles(prev => prev.map(m => ({ ...m, isVisible: false })));
+        setMessage('게임 종료');
 
-            localStorage.setItem('ranking', JSON.stringify(updated));
+        // 결과 랭킹 저장
+        const newRecord = { level, score, date: new Date().toLocaleString("ko-KR", { timeZone: "UTC" }) };
+        const prev = JSON.parse(localStorage.getItem('ranking') || '[]');
+        const updated = [...prev, newRecord].sort((a, b) => {
+            if (Number(b.level) !== Number(a.level)) return Number(b.level) - Number(a.level);
+            return b.score - a.score;
+        });
 
-            alert(`게임이 끝났습니다!\n최종 점수: ${score}점`);
-        }
-    }, [timeLeft]);
+        localStorage.setItem('ranking', JSON.stringify(updated));
+
+        alert(`게임이 끝났습니다!\n최종 점수: ${score}점`);
+
+    }, [timeLeft, isPlaying, score, level]);
 
 
     return (
