@@ -165,7 +165,10 @@ export default function GamePage() {
             // 결과 랭킹 저장
             const newRecord = { level, score, date: new Date().toLocaleString("ko-KR", { timeZone: "UTC" }) };
             const prev = JSON.parse(localStorage.getItem('ranking') || '[]');
-            const updated = [...prev, newRecord].sort((a, b) => b.score - a.score);
+            const updated = [...prev, newRecord].sort((a, b) => {
+                if (Number(b.level) !== Number(a.level)) return Number(b.level) - Number(a.level);
+                return b.score - a.score;
+            });
 
             localStorage.setItem('ranking', JSON.stringify(updated));
 
