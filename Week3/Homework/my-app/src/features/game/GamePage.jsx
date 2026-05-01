@@ -16,7 +16,7 @@ export default function GamePage() {
     const [failCount, setFailCount] = useState(0);
     const [message, setMessage] = useState('');
     const [isPlaying, setIsPlaying] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(LEVEL_CONFIG[1].time);
+    const [timeLeft, setTimeLeft] = useState(LEVEL_CONFIG[1].time * 10);
     const moleTimers = useRef([]);  // 두더지 자동숨김 타이머 목록(cleanup)
     const [level, setLevel] = useState(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function GamePage() {
     // 초기화 함수
     const resetGame = (lv = level) => {
         const { count, time } = LEVEL_CONFIG[lv];
-        setTimeLeft(time);
+        setTimeLeft(time * 10);
         setScore(0);
         setSuccessCount(0);
         setFailCount(0);
@@ -109,7 +109,7 @@ export default function GamePage() {
                 }
                 return prev - 1;
             });
-        }, 1000);
+        }, 100);
 
         return () => clearInterval(timer);
     }, [isPlaying]);
@@ -200,7 +200,7 @@ export default function GamePage() {
         <>
             <S.GameLayout>
                 <GameSidebar
-                    timeLeft={timeLeft}
+                    timeLeft={(timeLeft / 10).toFixed(1)}
                     score={score}
                     successCount={successCount}
                     failCount={failCount}
