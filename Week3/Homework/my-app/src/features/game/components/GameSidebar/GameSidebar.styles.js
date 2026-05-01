@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '../../../../styles/theme';
 
 // 왼쪽 사이드바
 export const Sidebar = styled.aside`
@@ -14,9 +15,9 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  padding: 2rem;
-  border-radius: 1.25rem;
-  background-color: #f3fed3;
+  padding: ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.lg};
+  background-color: ${theme.colors.primaryLight};
 `;
 
 // 성공/실패를 담는 그리드 컨테이너
@@ -28,14 +29,14 @@ export const GridWinLose = styled.div`
 
 // 사이드 바 제목
 export const CardLabel = styled.span`
-  font-size: 1rem;
-  font-weight: bold;
-  color: ${props => props.color || '#000000'};
+  font-size: ${theme.fontSize.md};
+  font-weight: ${theme.fontWeight.bold};
+  color: ${props => props.color || theme.colors.black};
 `;
 
 // 사이드 바 값
 export const CardValue = styled.span`
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #000000;
+  font-size: ${theme.fontSize.xxl};
+  font-weight: ${theme.fontWeight.bold};
+  color: ${theme.colors.black};
 `;

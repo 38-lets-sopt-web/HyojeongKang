@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '../../../../styles/theme';
 
 // 오른쪽 게임 영역
 export const GameContent = styled.section`
@@ -6,8 +7,8 @@ export const GameContent = styled.section`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #f3fed3;
-  border-radius: 1.25rem;
+  background-color: ${theme.colors.primaryLight};
+  border-radius: ${theme.borderRadius.lg};
 `;
 
 // 두더지 판 배경
@@ -29,7 +30,7 @@ export const ControlBar = styled.div`
 
 export const SelectLv = styled.select`
   padding: 0 0.8rem;
-  border-radius: 0.5rem;
+  border-radius: ${theme.borderRadius.sm};
 `;
 
 export const BtnGroup = styled.div`
@@ -40,27 +41,27 @@ export const BtnGroup = styled.div`
 // 버튼 공통 스타일
 const BaseButton = styled.button`
   padding: 0.5rem 1rem;
-  border-radius: 1.25rem;
+  border-radius: ${theme.borderRadius.lg};
   border: none;
-  font-weight: bold;
+  font-weight: ${theme.fontWeight.bold};
   cursor: pointer;
   color: white;
 `;
 
 // 시작 버튼
 export const StartButton = styled(BaseButton)`
-  background-color: #3bcd2e;
+  background-color: ${theme.colors.success};
 `;
 
 // 중단 버튼
 export const StopButton = styled(BaseButton)`
-  background-color: #ef4444;
+  background-color: ${theme.colors.danger};
 `;
 
 // 두더지 그리드 배경
 export const MoleGridBox = styled.div`
-  background-color: #ffffff;
-  border-radius: 15px;
+  background-color: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.md};
   padding: 15px 60px;      
 `;
 
@@ -75,8 +76,8 @@ export const MoleGrid = styled.div`
 
 // 두더지 한 칸 (빈 칸도 자리 유지)
 export const MoleCell = styled.div`
-  background-color: #cde383;
-  border-radius: 50%;
+  background-color: ${theme.colors.primaryMole};
+  border-radius: ${theme.borderRadius.full};
   aspect-ratio: 1 / 1;
   width: 100%;
   display: flex;
@@ -87,5 +88,5 @@ export const MoleCell = styled.div`
 // 두더지 이미지
 export const MoleImg = styled.img`
   width: 100%;
-  border-radius: 50%;
+  border-radius: ${theme.borderRadius.full};
 `;

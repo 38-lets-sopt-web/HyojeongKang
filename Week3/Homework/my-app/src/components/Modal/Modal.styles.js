@@ -1,22 +1,23 @@
 import styled from '@emotion/styled';
+import { theme } from '../../styles/theme';
 
 export const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${theme.colors.overlay};
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: ${theme.zIndex.modal};
 `;
 
 export const ModalBox = styled.div`
-  background-color: #ffffff;
-  border-radius: 1.25rem;
-  padding: 2rem;
+  background-color: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.lg};
+  padding: ${theme.spacing.lg};
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: ${theme.spacing.xs};
   min-width: 300px;
 `;
