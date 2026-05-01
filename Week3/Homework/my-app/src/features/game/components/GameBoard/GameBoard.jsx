@@ -2,20 +2,28 @@ import * as S from './GameBoard.styles';
 import successImg from '../../../../assets/success.png';
 import failImg from '../../../../assets/fail.png';
 import foundImg from '../../../../assets/found.png';
+import { LEVEL_CONFIG } from '../../constants/levelConfig';
 
-export default function GameBoard({ moles, onMoleClick, onStart, onStop }) {
+export default function GameBoard({ moles, level, onLevelChange, onMoleClick, onStart, onStop }) {
     return (
         <>
             {/* 오른쪽 게임 섹션 */}
             <S.GameContent>
                 <S.ControlBar>
-                    <S.StartButton onClick={onStart}>시작</S.StartButton>
-                    <S.StopButton onClick={onStop}>중단</S.StopButton>
+                    <S.SelectLv value={level} onChange={(e) => onLevelChange(Number(e.target.value))} >
+                        <option value={1}>Level 1</option>
+                        <option value={2}>Level 2</option>
+                        <option value={3}>Level 3</option>
+                    </S.SelectLv>
+                    <S.BtnGroup>
+                        <S.StartButton onClick={onStart}>시작</S.StartButton>
+                        <S.StopButton onClick={onStop}>중단</S.StopButton>
+                    </S.BtnGroup>
                 </S.ControlBar>
 
                 <S.MoleWrapper>
                     <S.MoleGridBox>
-                        <S.MoleGrid>
+                        <S.MoleGrid cols={LEVEL_CONFIG[level].cols}>
                             {moles.map((mole, index) => (
                                 <S.MoleCell key={index} onClick={() => onMoleClick(index)}>
                                     {mole.isVisible && (

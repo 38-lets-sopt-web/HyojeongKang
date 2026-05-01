@@ -22,9 +22,19 @@ export const MoleWrapper = styled.div`
 // 컨트롤 버튼 바
 export const ControlBar = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   gap: 10px;
   margin: 1rem 1rem 0 1rem;
+`;
+
+export const SelectLv = styled.select`
+  padding: 0 0.8rem;
+  border-radius: 0.5rem;
+`;
+
+export const BtnGroup = styled.div`
+  display: flex;
+  gap: 0.5rem;
 `;
 
 // 버튼 공통 스타일
@@ -54,10 +64,10 @@ export const MoleGridBox = styled.div`
   padding: 15px 60px;      
 `;
 
-// 2x2 두더지 판
+// 두더지 판
 export const MoleGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(${props => props.cols}, 1fr);
   gap: 15px;
   width: 400px;
   height: 400px;

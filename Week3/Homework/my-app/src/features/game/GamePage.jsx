@@ -2,39 +2,45 @@ import { useState, useEffect, useRef } from 'react';
 import * as S from './Game.styles.js';
 import GameSidebar from './components/GameSidebar/GameSidebar.jsx';
 import GameBoard from './components/GameBoard/GameBoard.jsx';
+import { LEVEL_CONFIG } from './constants/levelConfig.js';
+
+// moles 초기화 시 count 기준으로 생성
+const createMoles = (count) => Array.from({ length: count }, () => ({ type: 'hidden', isVisible: false }));
 
 export default function GamePage() {
 
-    const [moles, setMoles] = useState([
-        { type: 'hidden', isVisible: false },
-        { type: 'hidden', isVisible: false },
-        { type: 'hidden', isVisible: false },
-        { type: 'hidden', isVisible: false }
-    ]);
+    const [moles, setMoles] = useState(() => createMoles(LEVEL_CONFIG[1].count));
     const [score, setScore] = useState(0);
     const [successCount, setSuccessCount] = useState(0);
     const [failCount, setFailCount] = useState(0);
     const [message, setMessage] = useState('시작 버튼 클릭');
     const [isPlaying, setIsPlaying] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(15);
+    const [timeLeft, setTimeLeft] = useState(LEVEL_CONFIG[1].time);
     const moleTimers = useRef([]);  // 두더지 자동숨김 타이머 목록(cleanup)
+    const [level, setLevel] = useState(1);
+
+
+    const handleLevelChange = (newLevel) => {
+        if (isPlaying) return;        // 이미 진행 중이면 무시
+
+        setLevel(newLevel);
+        setMoles(createMoles(LEVEL_CONFIG[newLevel].count));
+        setTimeLeft(LEVEL_CONFIG[newLevel].time);
+    };
 
     // 게임 시작
     const handleStart = () => {
         if (isPlaying) return;        // 이미 진행 중이면 무시
 
+        const { count, time } = LEVEL_CONFIG[level];
+
         // 상태 초기화
-        setTimeLeft(15);
+        setTimeLeft(time);
         setScore(0);
         setSuccessCount(0);
         setFailCount(0);
         setMessage('플러시를 잡아라');
-        setMoles([
-            { type: 'hidden', isVisible: false },
-            { type: 'hidden', isVisible: false },
-            { type: 'hidden', isVisible: false },
-            { type: 'hidden', isVisible: false },
-        ]);
+        setMoles(createMoles(count));
 
         setIsPlaying(true);
     };
@@ -51,7 +57,9 @@ export default function GamePage() {
     // 랜덤 두더지 등장 함수
     const showRandomMoleRef = useRef(null);
     showRandomMoleRef.current = () => {
-        const index = Math.floor(Math.random() * 4);
+
+        const { count } = LEVEL_CONFIG[level];
+        const index = Math.floor(Math.random() * count);
         const type = Math.random() < 0.7 ? 'success' : 'fail';
 
         setMoles(prev => {
@@ -151,7 +159,7 @@ export default function GamePage() {
             setMessage('게임 종료');
 
             // 결과 랭킹 저장
-            const newRecord = { score, date: new Date().toLocaleString("ko-KR", { timeZone: "UTC" }) };
+            const newRecord = { level, score, date: new Date().toLocaleString("ko-KR", { timeZone: "UTC" }) };
             const prev = JSON.parse(localStorage.getItem('ranking') || '[]');
             const updated = [...prev, newRecord].sort((a, b) => b.score - a.score);
 
@@ -171,7 +179,10 @@ export default function GamePage() {
                 failCount={failCount}
                 message={message}
             />
-            <GameBoard moles={moles}
+            <GameBoard
+                moles={moles}
+                level={level}
+                onLevelChange={handleLevelChange}
                 onMoleClick={handleMoleClick}
                 onStart={handleStart}
                 onStop={handleStop}

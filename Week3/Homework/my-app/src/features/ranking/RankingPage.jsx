@@ -28,6 +28,7 @@ export default function GamePage() {
                 <thead>
                     <tr>
                         <S.Th>순위</S.Th>
+                        <S.Th>레벨</S.Th>
                         <S.Th>점수</S.Th>
                         <S.Th>기록 시각</S.Th>
                     </tr>
@@ -41,6 +42,7 @@ export default function GamePage() {
                         rankings.map((record, index) => (
                             <tr key={index}>
                                 <S.Td>{index + 1}</S.Td>
+                                <S.Td>Level {record.level}</S.Td>
                                 <S.Td>{record.score}점</S.Td>
                                 <S.Td>{record.date}</S.Td>
                             </tr>
