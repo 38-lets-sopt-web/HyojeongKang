@@ -13,6 +13,9 @@ export default function GamePage() {
 
     // 랭킹 초기화
     const handleReset = () => {
+        const confirmed = window.confirm("정말 초기화 하시겠습니까?");
+        if (!confirmed) return;  // 취소 시 중단
+
         localStorage.removeItem('ranking');
         setRankings([]);
     }
