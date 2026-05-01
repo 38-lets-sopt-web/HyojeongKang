@@ -22,7 +22,7 @@ export default function GamePage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalCountdown, setModalCountdown] = useState(3);
 
-
+    // 레벨 변경
     const handleLevelChange = (newLevel) => {
         if (isPlaying) return;        // 이미 진행 중이면 무시
         setLevel(newLevel);
@@ -62,6 +62,7 @@ export default function GamePage() {
         const index = Math.floor(Math.random() * count);
         const type = Math.random() < 0.7 ? 'success' : 'fail';
 
+        // 중복 타이머 방지(이미 보이는 칸이면 건너뜀)
         setMoles(prev => {
             if (prev[index].isVisible) return prev;
             return prev.map((m, i) =>
@@ -69,7 +70,7 @@ export default function GamePage() {
             );
         });
 
-        // 800ms 후 자동 숨김 (클릭된 칸(found)는 건너뜀)
+        // 800ms 후 자동 숨김 (클릭된 칸(found)은 건너뜀)
         const timer = setTimeout(() => {
             setMoles(prev => {
                 if (prev[index].type === 'found') return prev;
@@ -96,7 +97,7 @@ export default function GamePage() {
         };
     }, [isPlaying]);
 
-    // 타이머
+    // 카운트 다운 타이머
     useEffect(() => {
         if (!isPlaying) return;
 
@@ -159,7 +160,7 @@ export default function GamePage() {
         setMoles(prev => prev.map(m => ({ ...m, isVisible: false })));
         setMessage('게임 종료');
 
-        // 결과 랭킹 저장
+        // 결과 랭킹 저장 후 내림차순 정렬
         const newRecord = { level, score, date: new Date().toLocaleString("ko-KR") };
         const prev = JSON.parse(localStorage.getItem('ranking') || '[]');
         const updated = [...prev, newRecord].sort((a, b) => {
@@ -173,7 +174,7 @@ export default function GamePage() {
 
     }, [timeLeft, isPlaying, score, level]);
 
-    // 모달 닫기
+    // 모달 자동 닫기
     useEffect(() => {
         if (!isModalOpen) return;
 
