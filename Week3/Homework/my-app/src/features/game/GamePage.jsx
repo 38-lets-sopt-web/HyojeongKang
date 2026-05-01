@@ -149,6 +149,14 @@ export default function GamePage() {
             setIsPlaying(false);
             setMoles(prev => prev.map(m => ({ ...m, isVisible: false })));
             setMessage('게임 종료');
+
+            // 결과 랭킹 저장
+            const newRecord = { score, date: new Date().toLocaleString("ko-KR", { timeZone: "UTC" }) };
+            const prev = JSON.parse(localStorage.getItem('ranking') || '[]');
+            const updated = [...prev, newRecord].sort((a, b) => b.score - a.score);
+
+            localStorage.setItem('ranking', JSON.stringify(updated));
+
             alert(`게임이 끝났습니다!\n최종 점수: ${score}점`);
         }
     }, [timeLeft]);
