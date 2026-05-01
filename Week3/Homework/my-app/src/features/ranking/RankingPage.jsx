@@ -39,7 +39,7 @@ export default function GamePage() {
                 <tbody>
                     {rankings.length === 0 ? (
                         <tr>
-                            <S.Td colSpan={3}>아직 기록이 없습니다. 게임을 시작해보세요!</S.Td>
+                            <S.Td colSpan={4}>아직 기록이 없습니다. 게임을 시작해보세요!</S.Td>
                         </tr>
                     ) : (
                         rankings.map((record, index) => (
