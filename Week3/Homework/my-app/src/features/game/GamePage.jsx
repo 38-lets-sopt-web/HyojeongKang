@@ -13,7 +13,7 @@ export default function GamePage() {
     const [score, setScore] = useState(0);
     const [successCount, setSuccessCount] = useState(0);
     const [failCount, setFailCount] = useState(0);
-    const [message, setMessage] = useState('시작 버튼 클릭');
+    const [message, setMessage] = useState('');
     const [isPlaying, setIsPlaying] = useState(false);
     const [timeLeft, setTimeLeft] = useState(LEVEL_CONFIG[1].time);
     const moleTimers = useRef([]);  // 두더지 자동숨김 타이머 목록(cleanup)
@@ -39,9 +39,7 @@ export default function GamePage() {
         setScore(0);
         setSuccessCount(0);
         setFailCount(0);
-        setMessage('플러시를 잡아라');
         setMoles(createMoles(count));
-
         setIsPlaying(true);
     };
 
@@ -49,9 +47,15 @@ export default function GamePage() {
     const handleStop = () => {
         if (!isPlaying) return;
 
+        const { count, time } = LEVEL_CONFIG[level];
+
         setIsPlaying(false);
-        setMoles(prev => prev.map(m => ({ ...m, isVisible: false })));
-        setMessage('중단되었습니다');
+        setTimeLeft(time);
+        setScore(0);
+        setSuccessCount(0);
+        setFailCount(0);
+        setMoles(createMoles(count));
+        setMessage('');
     };
 
     // 랜덤 두더지 등장 함수
