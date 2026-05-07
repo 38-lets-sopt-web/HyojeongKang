@@ -7,7 +7,7 @@ export const containerStyle = css`
     align-items: center;
     justify-content: center;
     min-height: 100vh;      
-    padding: 5rem 0;  
+    padding: ${theme.space.xxlarge} 0;  
     background-color: ${theme.color.background};
 `;
 
@@ -25,7 +25,7 @@ export const titleStyle = css`
 `;
 
 export const loginTextStyle = css`
-    color: gray;
+    color: ${theme.color.gray};
     margin: 0;
     font-size: ${theme.fontSize.small};
 `;

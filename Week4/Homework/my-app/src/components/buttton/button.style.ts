@@ -3,7 +3,7 @@ import theme from '../../styles/theme';
 
 // 버튼 공통 스타일
 const baseButtonStyle = css`
-    padding: 12px;
+    padding: ${theme.space.smedium};
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
