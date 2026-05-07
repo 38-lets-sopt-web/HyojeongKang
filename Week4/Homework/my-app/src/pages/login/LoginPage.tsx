@@ -18,7 +18,8 @@ const LoginPage = () => {
                 loginId,
                 password,
             });
-            console.log('로그인 성공', response.data);
+            console.log('로그인 성공', response.data.data);
+            localStorage.setItem('userId', response.data.data.userId);
             navigate('/mypage');
         } catch (error) {
             console.error('로그인 실패', error);
@@ -29,18 +30,18 @@ const LoginPage = () => {
         <section css={s.containerStyle}>
             <h1 css={s.titleStyle}>SOPT MEMBERS</h1>
             <form css={s.formStyle} onSubmit={handleSubmit}>
-                <Input 
-                    type="text" 
-                    placeholder="아이디" 
+                <Input
+                    type="text"
+                    placeholder="아이디"
                     label="아이디"
                     value={loginId}
                     onChange={(e) => setLoginId(e.target.value)} />
-                <Input 
-                    type="password" 
-                    placeholder="비밀번호" 
-                    label="비밀번호" 
+                <Input
+                    type="password"
+                    placeholder="비밀번호"
+                    label="비밀번호"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}/>
+                    onChange={(e) => setPassword(e.target.value)} />
                 <Button type="submit" variant='primary'>로그인</Button>
                 <Button type="button" variant="secondary" onClick={() => navigate('/signup')}>
                     회원가입 하러가기
