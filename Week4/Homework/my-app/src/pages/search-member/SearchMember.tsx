@@ -3,14 +3,22 @@ import * as s from "./SearchMember.style.ts";
 import Input from "../../components/input/Input.tsx";
 import Button from "../../components/buttton/Button.tsx";
 import MemberDetailCard from "../../components/member-detail/MemberDetailCard.tsx";
+import MemberCard from "../../components/member-card/MemberCard.tsx";
 import Header from "../../components/header/Header.tsx";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+interface Member {
+    id: number;
+    name: string;
+    part: string;
+}
 
 const SearchMember = () => {
     const [searchId, setSearchId] = useState('');
     const [memberData, setMemberData] = useState(null);
     const [searched, setSearched] = useState(false); 
+    const [memberList, setMemberList] = useState<Member[]>([]);
 
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -27,11 +35,23 @@ const SearchMember = () => {
         }
     }
 
+        useEffect(() => {
+        const fetchMembers = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
+                setMemberList(response.data.data.users);
+            } catch (error) {
+                console.error('멤버 목록 조회 실패', error);
+            }
+        };
+        fetchMembers();
+    }, []);
+
 
     return (
         <>
             <Header />
-            <section css={s.containerStyle}>
+            <section css={s.searchContainerStyle}>
                 <h1>회원 조회</h1>
                 <form css={s.formStyle} onSubmit={handleSearch}>
                     <Input
@@ -52,6 +72,14 @@ const SearchMember = () => {
                 {searched && memberData && (
                     <MemberDetailCard data={memberData} />
                 )}
+            </section>
+            <section css={s.listContainerStyle}>
+                <h3>전체 멤버 리스트</h3>
+                <div css={s.memberGridStyle}>
+                    {memberList.map((member) => (
+                        <MemberCard key={member.id} name={member.name} part={member.part} />
+                    ))}
+                </div>
             </section>
         </>
     );

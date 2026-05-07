@@ -1,11 +1,10 @@
 import { css } from '@emotion/react';
 import theme from '../../styles/theme';
 
-export const containerStyle = css`
+export const searchContainerStyle = css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
     padding-top: ${theme.space.xxlarge};
     background-color: ${theme.color.background};
 `;
@@ -32,4 +31,17 @@ export const emptyStyle = css`
     border: 0.5px solid ${theme.color.border};
     border-radius: 12px;
     padding: ${theme.space.xxlarge} ${theme.space.mlarge};
+`;
+
+export const listContainerStyle = css`
+    display: flex;
+    flex-direction: column;
+    padding: ${theme.space.xxlarge};
+    background-color: ${theme.color.background};
+`;
+
+export const memberGridStyle = css`
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
 `;
