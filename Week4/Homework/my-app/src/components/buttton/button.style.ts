@@ -8,6 +8,7 @@ const baseButtonStyle = css`
     cursor: pointer;
     font-weight: bold;
     width: 100%;
+    font-size: ${theme.fontSize.small};
 `;
 
 export const primaryButtonStyle = css`

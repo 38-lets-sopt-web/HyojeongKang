@@ -23,4 +23,5 @@ export const wrapperStyle = css`
 export const labelStyle = css`
     font-size: 14px;
     color: ${theme.color.text};
+    font-size: ${theme.fontSize.small};
 `;

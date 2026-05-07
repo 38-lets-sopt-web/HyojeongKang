@@ -6,7 +6,8 @@ export const containerStyle = css`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;      
+    padding: 5rem 0;  
     background-color: ${theme.color.background};
 `;
 
@@ -21,4 +22,18 @@ export const formStyle = css`
 export const titleStyle = css`
     color: ${theme.color.secondary};
     font-size: ${theme.fontSize.title};
+`;
+
+export const loginTextStyle = css`
+    color: gray;
+    margin: 0;
+    font-size: ${theme.fontSize.small};
+`;
+
+export const loginLinkStyle = css`
+    color: ${theme.color.pointText};
+    cursor: pointer;
+    margin-left: 4px;
+    font-weight: bold;
+    font-size: ${theme.fontSize.small};
 `;
