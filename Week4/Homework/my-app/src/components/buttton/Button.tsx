@@ -8,13 +8,14 @@ interface ButtonProps {
     onClick?: () => void;
 }
 
-const Button = ({ children, variant = 'primary', type = 'button' }: ButtonProps) => {
+const Button = ({ children, variant = 'primary', type = 'button', onClick }: ButtonProps) => {
     const selectStyle = variant === 'primary' ? s.primaryButtonStyle : s.secondaryButtonStyle;
 
     return (
         <button 
             type={type} 
             css={selectStyle}
+            onClick={onClick}
         >
             {children}
         </button>
