@@ -7,6 +7,7 @@ import MemberCard from "../../components/member-card/MemberCard.tsx";
 import Header from "../../components/header/Header.tsx";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 interface Member {
     id: number;
@@ -19,6 +20,7 @@ const SearchMember = () => {
     const [memberData, setMemberData] = useState(null);
     const [searched, setSearched] = useState(false); 
     const [memberList, setMemberList] = useState<Member[]>([]);
+    const navigate = useNavigate();
 
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -77,7 +79,11 @@ const SearchMember = () => {
                 <h3>전체 멤버 리스트</h3>
                 <div css={s.memberGridStyle}>
                     {memberList.map((member) => (
-                        <MemberCard key={member.id} name={member.name} part={member.part} />
+                        <MemberCard 
+                        key={member.id} 
+                        name={member.name} 
+                        part={member.part} 
+                        onClick={() => navigate(`/members/${member.id}`)}/>
                     ))}
                 </div>
             </section>

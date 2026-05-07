@@ -3,6 +3,7 @@ import Login from "../pages/login/LoginPage";
 import SignUp from "../pages/sign-up/SIgnUpPage";
 import MyPage from "../pages/my-page/MyPage";
 import SearchMember from "../pages/search-member/SearchMember";
+import MemberDetail from "../pages/member-detail/MemberDetail";
 
 const router = createBrowserRouter([
     {
@@ -21,9 +22,13 @@ const router = createBrowserRouter([
         path: "/mypage",
         Component: MyPage
     },
-        {
+    {
         path: "/members",
         Component: SearchMember
+    },
+        {
+        path: "/members/:id",
+        Component: MemberDetail
     }
 ])
 
