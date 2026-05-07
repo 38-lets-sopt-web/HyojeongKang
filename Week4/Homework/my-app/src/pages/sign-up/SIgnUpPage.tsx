@@ -8,6 +8,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     return (
+
         <section css={s.containerStyle}>
             <h1 css={s.titleStyle}>회원가입</h1>
             <form css={s.formStyle}>
