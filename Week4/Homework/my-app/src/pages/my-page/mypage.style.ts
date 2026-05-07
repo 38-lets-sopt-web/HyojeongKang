@@ -42,11 +42,3 @@ export const infoLabelStyle = css`
 export const infoValueStyle = css`
     color: ${theme.color.gray};
 `;
-
-export const badgeStyle = css`
-    font-size: 11px;
-    background-color: #e6f1fb;
-    color: #185fa5;
-    padding: 2px 8px;
-    border-radius: 8px;
-`;
