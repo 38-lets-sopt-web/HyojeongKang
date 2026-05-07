@@ -20,6 +20,10 @@ const router = createBrowserRouter([
     {
         path: "/mypage",
         Component: MyPage
+    },
+        {
+        path: "/members",
+        Component: SearchMember
     }
 ])
 
