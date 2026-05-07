@@ -1,0 +1,19 @@
+/** @jsxImportSource @emotion/react */
+import { Global, css } from '@emotion/react';
+
+const GlobalStyle = () => (
+    <Global
+        styles={css`
+            * {
+                box-sizing: border-box;
+            }
+            html, body, #root {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+        `}
+    />
+);
+
+export default GlobalStyle;
