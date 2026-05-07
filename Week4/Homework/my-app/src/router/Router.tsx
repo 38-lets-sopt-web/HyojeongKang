@@ -6,7 +6,7 @@ import MyPage from "../pages/my-page/MyPage";
 const router = createBrowserRouter([
     {
         path: "/",
-        Component: MyPage
+        Component: Login
     },
     {
         path: "/login",
