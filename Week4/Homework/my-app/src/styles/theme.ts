@@ -2,7 +2,8 @@ const theme = {
     color: {
         primary: '#21d6ff',
         secondary: '#0b133e',
-        background: '#f3f4f7',
+        background: '#f9fafc',
+        bgInfo: '#f1f5f7',
         btnhover: '#93edff',
         textOnLight: '#333',
         textOnDark: '#fff',
@@ -11,12 +12,13 @@ const theme = {
         gray: '#888'
     },
     space: {
-        small: '0.5rem',    // 8px
-        smedium: '0.75rem',  // 12px
-        medium: '1rem',     // 16px
-        large: '2rem',      // 32px
-        xlarge: '3rem',     // 48px
-        xxlarge: '5rem',    // 80px
+        small: '0.5rem',        // 8px
+        smedium: '0.75rem',     // 12px
+        medium: '1rem',         // 16px
+        mlarge: '1.5rem',       // 24px
+        large: '2rem',          // 32px
+        xlarge: '3rem',         // 48px
+        xxlarge: '5rem',        // 80px
     },
     fontSize: {
         small: '0.875rem',   // 14px
