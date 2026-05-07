@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import * as s from "./memberdetailcard.style";
+import * as s from "./memberDetailCard.style";
 
 const MemberDetailCard = () => {
     return (
