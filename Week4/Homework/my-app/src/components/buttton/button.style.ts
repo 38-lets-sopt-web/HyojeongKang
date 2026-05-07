@@ -16,6 +16,11 @@ export const primaryButtonStyle = css`
     background-color: ${theme.color.primary};
     color: white;
     border: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    
+    &:hover {
+        background-color: ${theme.color.btnhover};
+    }
 `;
 
 export const secondaryButtonStyle = css`
