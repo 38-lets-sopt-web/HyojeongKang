@@ -40,7 +40,7 @@ const SearchMember = () => {
                         label="회원 ID"
                         value={searchId}
                         onChange={(e) => setSearchId(e.target.value)} />
-                    <Button type="submit" variant='primary'>검색</Button>
+                    <Button type="submit" variant='primary' disabled={!searchId}>검색</Button>
                 </form>
                 <h3 css={s.resultTitleStyle}>검색 결과</h3>
                 {!searched && (
