@@ -18,23 +18,23 @@ const Input = ({ type = 'text', placeholder, value, label, onChange }: InputProp
         <div css={s.wrapperStyle}>
             <label css={s.labelStyle}>{label}</label>
             <div css={s.inputWrapperStyle}>
-            <input
-                type={type === 'password' && showPassword ? 'text' : type}
-                placeholder={placeholder}
-                value={value}
-                onChange={onChange}
-                css={s.inputStyle}
-            />
-            {/* password 타입일 때만 표시/숨김 토글 버튼 렌더링 */}
-            {type === 'password' && (
-                <button
-                    type="button"
-                    css={s.toggleButtonStyle}
-                    onClick={() => setShowPassword(!showPassword)}
-                >
-                    {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-                </button>
-            )}
+                <input
+                    type={type === 'password' && showPassword ? 'text' : type}
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}
+                    css={s.inputStyle}
+                />
+                {/* password 타입일 때만 표시/숨김 토글 버튼 렌더링 */}
+                {type === 'password' && (
+                    <button
+                        type="button"
+                        css={s.toggleButtonStyle}
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+                    </button>
+                )}
             </div>
         </div>
     );
