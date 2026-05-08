@@ -12,7 +12,7 @@ interface InputProps {
 }
 
 const Input = ({ type = 'text', placeholder, value, label, onChange }: InputProps) => {
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false); // 비밀번호 표시 여부
 
     return (
         <div css={s.wrapperStyle}>
@@ -25,6 +25,7 @@ const Input = ({ type = 'text', placeholder, value, label, onChange }: InputProp
                 onChange={onChange}
                 css={s.inputStyle}
             />
+            {/* password 타입일 때만 표시/숨김 토글 버튼 렌더링 */}
             {type === 'password' && (
                 <button
                     type="button"

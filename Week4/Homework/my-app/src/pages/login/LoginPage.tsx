@@ -12,13 +12,16 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+        e.preventDefault(); // 폼 기본 제출 동작(새로고침) 방지
         try {
             const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signin`, {
                 loginId,
                 password,
             });
+            
             console.log('로그인 성공', response.data.data);
+
+            // 로그인 성공 시 userId를 로컬스토리지에 저장 후 마이페이지로 이동
             localStorage.setItem('userId', response.data.data.userId);
             navigate('/mypage');
         } catch (error) {

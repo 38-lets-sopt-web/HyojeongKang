@@ -17,13 +17,13 @@ interface Member {
 
 const SearchMember = () => {
     const [searchId, setSearchId] = useState('');
-    const [memberData, setMemberData] = useState(null);
-    const [searched, setSearched] = useState(false); 
-    const [memberList, setMemberList] = useState<Member[]>([]);
+    const [memberData, setMemberData] = useState(null);     // 검색된 멤버 데이터
+    const [searched, setSearched] = useState(false);        // 검색 시도 여부 -> 결과 영역 표시 조건
+    const [memberList, setMemberList] = useState<Member[]>([]); // 전체 멤버 목록
     const navigate = useNavigate();
 
     const handleSearch = async (e: React.FormEvent) => {
-        e.preventDefault();
+        e.preventDefault(); // 폼 기본 제출 동작(새로고침) 방지
 
         try {
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/users/${searchId}`);
@@ -37,7 +37,8 @@ const SearchMember = () => {
         }
     }
 
-        useEffect(() => {
+    // 전체 멤버 목록 -> 하단 리스트에 표시
+    useEffect(() => {
         const fetchMembers = async () => {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
@@ -47,7 +48,7 @@ const SearchMember = () => {
             }
         };
         fetchMembers();
-    }, []);
+    }, []); // 빈 배열 : 최초 1회만 실행
 
 
     return (
@@ -65,12 +66,15 @@ const SearchMember = () => {
                     <Button type="submit" variant='primary' disabled={!searchId}>검색</Button>
                 </form>
                 <h3 css={s.resultTitleStyle}>검색 결과</h3>
+                {/* 검색 결과 입력 전 */}
                 {!searched && (
                     <div css={s.emptyStyle}>원하는 ID를 검색해보세요</div>
                 )}
+                {/* 검색 결과가 없을 경우 */}
                 {searched && !memberData && (
                     <div css={s.emptyStyle}>해당 회원이 없습니다</div>
                 )}
+                {/* 검색 결과가 있는 경우 */}
                 {searched && memberData && (
                     <MemberDetailCard data={memberData} />
                 )}
@@ -83,7 +87,7 @@ const SearchMember = () => {
                         key={member.id} 
                         name={member.name} 
                         part={member.part} 
-                        onClick={() => navigate(`/members/${member.id}`)}/>
+                        onClick={() => navigate(`/members/${member.id}`)}/> // 카드 클릭 시 상세 페이지로 이동
                     ))}
                 </div>
             </section>

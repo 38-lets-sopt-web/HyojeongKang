@@ -16,10 +16,13 @@ const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
     const [part, setPart] = useState('');
-    const [step, setStep] = useState(1); // 현재 단계 1
+
+    // 현재 회원 가입 단계 (1:아이디 2:비밀번호 3:기타개인정보)
+    const [step, setStep] = useState(1); 
+    
 
     const handleNext = () => {
-        // 단계별 유효성 검사
+        // 최소한의 단계별 유효성 검사
         if (step === 1 && !loginId) return alert('아이디를 입력해주세요');
         if (step === 2 && !password) return alert('비밀번호를 입력해주세요');
         if (step === 2 && password !== passwordCheck) return alert('비밀번호가 일치하지 않습니다');
@@ -32,8 +35,9 @@ const LoginPage = () => {
         setStep(step + 1);
     };
 
+    // 최종 회원가입 API 요청
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+        e.preventDefault(); // 폼 기본 제출 동작(새로고침) 방지
 
         if (password !== passwordCheck) {
             alert('비밀번호가 일치하지 않습니다.')
@@ -67,6 +71,7 @@ const LoginPage = () => {
         <section css={s.containerStyle}>
             <h1 css={s.titleStyle}>회원가입</h1>
             <form css={s.formStyle} onSubmit={handleSubmit}>
+                {/* step 값에 따라 해당 단계의 입력 폼만 렌더링 */}
                 {step === 1 && (
                     <Input type="text" placeholder="사용할 아이디를 입력해주세요" label="아이디"
                         value={loginId} onChange={(e) => setLoginId(e.target.value)} />

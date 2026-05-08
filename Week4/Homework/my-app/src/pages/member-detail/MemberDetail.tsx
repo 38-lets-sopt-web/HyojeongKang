@@ -22,8 +22,9 @@ const MemberDetail = () => {
             }
         };
         fetchData();
-    }, [id]);
+    }, [id]); // id가 바뀔 때마다 유저의 상세 정보를 새로 불러옴
 
+    // 데이터 로드 전 member가 null이면 로딩 표시 (MemberDetailCard에 null 전달 방지)
     if (!member) return <div>로딩 중...</div>;
 
     return (

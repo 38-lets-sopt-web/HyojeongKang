@@ -26,7 +26,7 @@ const Mypage = () => {
     // 유저 정보 가져오기
     useEffect(() => {
         const userId = localStorage.getItem('userId');
-        if (!userId) return;
+        if (!userId) return; // 로그인 정보 없으면 요청 중단
 
         const fetchUser = async () => {
             try {
@@ -87,7 +87,7 @@ const Mypage = () => {
                         placeholder="이름을 입력해주세요"
                         label="이름"
                         value={userData.name}
-                        onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+                        onChange={(e) => setUserData({ ...userData, name: e.target.value })} // 스프레드로 기존 값 유지하면서 해당 필드만 업데이트
                     />
                     <Input
                         type="text"
