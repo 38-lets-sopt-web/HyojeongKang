@@ -7,7 +7,6 @@ export const detailContainerStyle = css`
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: ${theme.color.background};
     padding-bottom: 100px;
 `;
 

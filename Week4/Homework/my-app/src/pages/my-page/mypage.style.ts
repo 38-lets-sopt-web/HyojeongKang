@@ -7,7 +7,6 @@ export const containerStyle = css`
     align-items: center;
     min-height: 100vh;
     padding-top: ${theme.space.xxlarge};
-    background-color: ${theme.color.background};
 `;
 
 export const contentWrapperStyle = css`

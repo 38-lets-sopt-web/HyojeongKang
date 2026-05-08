@@ -8,7 +8,6 @@ export const containerStyle = css`
     justify-content: center;
     min-height: 100vh;      
     padding: ${theme.space.xxlarge} 0;  
-    background-color: ${theme.color.background};
 `;
 
 export const formStyle = css`

@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Global, css } from '@emotion/react';
+import theme from './theme';
 
 const GlobalStyle = () => (
     <Global
@@ -11,6 +12,7 @@ const GlobalStyle = () => (
                 margin: 0;
                 padding: 0;
                 height: 100%;
+                background-color: ${theme.color.background};
             }
         `}
     />

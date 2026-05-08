@@ -6,7 +6,6 @@ export const searchContainerStyle = css`
     flex-direction: column;
     align-items: center;
     padding-top: ${theme.space.xxlarge};
-    background-color: ${theme.color.background};
 `;
 
 export const formStyle = css`
@@ -37,7 +36,6 @@ export const listContainerStyle = css`
     display: flex;
     flex-direction: column;
     padding: ${theme.space.xxlarge};
-    background-color: ${theme.color.background};
 `;
 
 export const memberGridStyle = css`
