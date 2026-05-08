@@ -37,3 +37,22 @@ export const loginLinkStyle = css`
     font-weight: bold;
     font-size: ${theme.fontSize.small};
 `;
+
+export const selectContainer = css`
+    width: 500px;
+`;
+
+export const selectStyle = css`
+    width: 100%;
+    padding: ${theme.space.smedium};
+    border: 1px solid ${theme.color.border};
+    border-radius: 8px;
+    font-size: ${theme.fontSize.small};
+    cursor: pointer;
+`;
+
+export const labelStyle = css`
+    font-size: ${theme.fontSize.small};
+    margin-bottom: 4px;
+    display: block;
+`;

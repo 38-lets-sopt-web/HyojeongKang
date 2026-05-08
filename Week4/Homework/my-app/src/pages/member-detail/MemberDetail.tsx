@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import * as s from "./memberDetail.style";
+import * as s from "./memberDetail.style.ts";
 import Header from "../../components/header/Header.tsx";
 import MemberDetailCard from "../../components/member-detail/MemberDetailCard.tsx";
 import { useParams, useNavigate } from "react-router";

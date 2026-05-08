@@ -4,10 +4,13 @@ const theme = {
         secondary: '#0b133e',
         background: '#f9fafc',
         bgInfo: '#f1f5f7',
+        bgCard: '#ffffff',
+        bgTag: '#f0f4ff',
         btnhover: '#93edff',
         textOnLight: '#333',
         textOnDark: '#fff',
         pointText: '#02bee0',
+        tagText: '#4a6cf7',
         border: '#ddd',
         gray: '#888'
     },

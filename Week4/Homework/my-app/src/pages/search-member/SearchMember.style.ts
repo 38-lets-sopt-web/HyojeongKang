@@ -43,5 +43,5 @@ export const listContainerStyle = css`
 export const memberGridStyle = css`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
+    gap: ${theme.space.smedium};
 `;
