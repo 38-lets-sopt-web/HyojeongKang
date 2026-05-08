@@ -8,7 +8,7 @@ import MemberDetail from "../pages/member-detail/MemberDetail";
 const router = createBrowserRouter([
     {
         path: "/",
-        Component: SearchMember
+        Component: Login
     },
     {
         path: "/login",
