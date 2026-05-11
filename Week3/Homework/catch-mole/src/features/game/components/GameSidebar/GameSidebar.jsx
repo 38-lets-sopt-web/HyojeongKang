@@ -1,4 +1,5 @@
 import * as S from './GameSidebar.styles';
+import { theme } from '../../../../styles/theme';
 
 export default function GameSidebar({ timeLeft, score, successCount, failCount, message }) {
     return (
@@ -17,11 +18,11 @@ export default function GameSidebar({ timeLeft, score, successCount, failCount, 
 
                 <S.GridWinLose>
                     <S.Card>
-                        <S.CardLabel color="#3bcd2e">성공</S.CardLabel>
+                        <S.CardLabel color={theme.colors.success}>성공</S.CardLabel>
                         <S.CardValue>{successCount}</S.CardValue>
                     </S.Card>
                     <S.Card>
-                        <S.CardLabel color="#ef4444">실패</S.CardLabel>
+                        <S.CardLabel color={theme.colors.danger}>실패</S.CardLabel>
                         <S.CardValue>{failCount}</S.CardValue>
                     </S.Card>
                 </S.GridWinLose>
