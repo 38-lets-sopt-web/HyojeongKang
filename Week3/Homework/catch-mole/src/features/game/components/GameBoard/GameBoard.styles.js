@@ -75,8 +75,10 @@ export const MoleGrid = styled.div`
 `;
 
 // 두더지 한 칸 (빈 칸도 자리 유지)
-export const MoleCell = styled.div`
+export const MoleCell = styled.button`
+  padding: 0;
   background-color: ${theme.colors.primaryMole};
+  border: none;
   border-radius: ${theme.borderRadius.full};
   aspect-ratio: 1 / 1;
   width: 100%;
@@ -88,5 +90,8 @@ export const MoleCell = styled.div`
 // 두더지 이미지
 export const MoleImg = styled.img`
   width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
   border-radius: ${theme.borderRadius.full};
 `;

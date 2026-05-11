@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as S from './Ranking.styles';
 
-export default function GamePage() {
+export default function RankingPage() {
 
     const [rankings, setRankings] = useState([]);
 
