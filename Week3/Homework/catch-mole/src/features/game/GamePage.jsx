@@ -4,9 +4,15 @@ import GameSidebar from './components/GameSidebar/GameSidebar.jsx';
 import GameBoard from './components/GameBoard/GameBoard.jsx';
 import { LEVEL_CONFIG } from './constants/levelConfig.js';
 import Modal from '../../components/Modal/Modal.jsx';
+import { saveRanking } from "../../utils/storage";
 
 // moles 초기화 시 count 기준으로 생성
-const createMoles = (count) => Array.from({ length: count }, () => ({ type: 'hidden', isVisible: false }));
+const createMoles = (count) =>
+    Array.from({ length: count }, () => ({
+        id: crypto.randomUUID(),
+        type: 'hidden',
+        isVisible: false
+    }));
 
 export default function GamePage() {
 
@@ -160,15 +166,7 @@ export default function GamePage() {
         setMoles(prev => prev.map(m => ({ ...m, isVisible: false })));
         setMessage('게임 종료');
 
-        // 결과 랭킹 저장 후 내림차순 정렬
-        const newRecord = { level, score, date: new Date().toLocaleString("ko-KR") };
-        const prev = JSON.parse(localStorage.getItem('ranking') || '[]');
-        const updated = [...prev, newRecord].sort((a, b) => {
-            if (Number(b.level) !== Number(a.level)) return Number(b.level) - Number(a.level);
-            return b.score - a.score;
-        });
-
-        localStorage.setItem('ranking', JSON.stringify(updated));
+        saveRanking({ level, score });
 
         setIsModalOpen(true);
 

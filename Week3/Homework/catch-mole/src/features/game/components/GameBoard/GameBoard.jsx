@@ -26,7 +26,7 @@ export default function GameBoard({ moles, level, onLevelChange, onMoleClick, on
                 <S.MoleGridBox>
                     <S.MoleGrid cols={LEVEL_CONFIG[level].cols}>
                         {moles.map((mole, index) => (
-                            <S.MoleCell key={index} onClick={() => onMoleClick(index)}>
+                            <S.MoleCell key={mole.id} onClick={() => onMoleClick(index)}>
                                 {mole.isVisible && (
                                     <S.MoleImg
                                         src={

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as S from './Ranking.styles';
+import { getRanking, clearRanking } from '../../utils/storage';
 
 export default function RankingPage() {
 
@@ -7,8 +8,7 @@ export default function RankingPage() {
 
     // 로컬스토리지에서 랭킹 불러오기
     useEffect(() => {
-        const stored = JSON.parse(localStorage.getItem('ranking') || '[]');
-        setRankings(stored);
+        setRankings(getRanking);
     }, [])
 
     // 랭킹 초기화
@@ -16,7 +16,7 @@ export default function RankingPage() {
         const confirmed = window.confirm("정말 초기화 하시겠습니까?");
         if (!confirmed) return;  // 취소 시 중단
 
-        localStorage.removeItem('ranking');
+        clearRanking();
         setRankings([]);
     }
 
@@ -43,7 +43,7 @@ export default function RankingPage() {
                         </tr>
                     ) : (
                         rankings.map((record, index) => (
-                            <tr key={index}>
+                            <tr key={record.id}>
                                 <S.Td>{index + 1}</S.Td>
                                 <S.Td>Level {record.level}</S.Td>
                                 <S.Td>{record.score}점</S.Td>
