@@ -213,6 +213,7 @@ export default function GamePage() {
                     onMoleClick={handleMoleClick}
                     onStart={handleStart}
                     onStop={handleStop}
+                    isPlaying={isPlaying}
                 />
             </S.GameLayout>
 

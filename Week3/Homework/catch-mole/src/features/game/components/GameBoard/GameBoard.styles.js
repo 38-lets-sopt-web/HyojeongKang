@@ -46,6 +46,12 @@ const BaseButton = styled.button`
   font-weight: ${theme.fontWeight.bold};
   cursor: pointer;
   color: white;
+
+  // 비활성화(disabled) 상태일 때의 스타일
+  &:disabled {
+    background-color: ${theme.colors.gray}; 
+    cursor: not-allowed;                   
+  }
 `;
 
 // 시작 버튼
