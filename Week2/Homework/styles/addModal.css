@@ -1,0 +1,84 @@
+/* 내역 추가 모달 스타일 */
+.modal-container {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: var(--modal-overlay);
+    justify-content: center;
+    align-items: center;
+    z-index: var(--z-modal);
+}
+
+.modal-container.hidden {
+    display: none;
+}
+
+.modal-header {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 36px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--btn-close-color);
+    padding: 5px;
+}
+
+.add-modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 16px;
+    width: 420px;
+}
+
+.add-modal h4,
+.field-full {
+    grid-column: span 2;
+}
+
+.field-full,
+.field-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--text-muted);
+}
+
+.add-modal input,
+.add-modal select {
+    padding: 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--text-input);
+}
+
+.add-btn {
+    justify-content: start;
+    width: 25%;
+    margin-top: 8px;
+    padding: 8px;
+    background-color: var(--btn-primary-bg);
+    color: var(--text-on-dark);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}

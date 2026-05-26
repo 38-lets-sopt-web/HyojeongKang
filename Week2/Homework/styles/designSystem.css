@@ -1,0 +1,37 @@
+/* 전역 디자인 토큰 통합 관리 파일 */
+
+:root {
+
+    /* ── 배경 ── */
+    --bg-page: rgb(246, 249, 251);
+    --bg-card: #ffffff;
+    --bg-header: #01142b;
+    --modal-overlay: rgba(0, 0, 0, 0.5);
+
+    /* ── 버튼 ── */
+    --btn-primary-bg: #01142b;
+    --btn-close-color: #999999;
+
+    /* ── 텍스트 ── */
+    --text-primary: #2d2e33;
+    --text-on-dark: #ffffff;
+    --text-label: rgb(141, 145, 176);
+    --text-muted: #555555;
+    --text-input: #333333;
+    --text-point: #00a2ff;
+    --font-weight-medium: 500;
+
+    /* ── 경계선 ── */
+    --border-default: #dddddd;
+    --border-light: rgba(218, 218, 218, 0.616);
+    --border-width: 1.5px;
+
+    /* ── 그림자 ── */
+    --shadow-box: rgba(0, 0, 0, 0.05);
+
+    /* ── 레이아웃 ── */
+    --bg-table-header: #f8f9fa;
+
+    /* z-index */
+    --z-modal: 1000;
+}

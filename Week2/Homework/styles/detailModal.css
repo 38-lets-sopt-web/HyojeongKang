@@ -1,0 +1,36 @@
+/* 상세 내역 모달 스타일 */
+.detail-modal-container {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: var(--modal-overlay);
+    justify-content: center;
+    align-items: center;
+    z-index: var(--z-modal);
+}
+
+.detail-modal-container.hidden {
+    display: none;
+}
+
+.modal-detail {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 16px;
+    width: 30%;
+}
+
+.detail-item {
+    display: flex;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+dt {
+    color: var(--text-label);
+    font-weight: var(--font-weight-medium);
+}
+
+dd {
+    display: flex;
+}

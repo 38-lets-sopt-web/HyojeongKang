@@ -1,0 +1,58 @@
+/* 검색 필터 스타일 */
+.search-filter {
+    margin: 1rem 5rem;
+    padding: 1.25rem;
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px var(--shadow-box);
+}
+
+.search-filter h4 {
+    margin: 0 0 1rem 0;
+}
+
+.filter-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.filter-item:nth-child(1) {
+    grid-column: 1 / 4;
+}
+
+.filter-buttons {
+    grid-column: 1 / 4;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.filter-buttons button {
+    flex: 1;
+    padding: 10px;
+    background-color: var(--btn-primary-bg);
+    color: var(--text-on-dark);
+    border: none;
+    border-radius: 8px;
+    font-weight: var(--font-weight-medium);
+}
+
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filter-item input,
+.filter-item select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: var(--border-width) solid var(--border-light);
+}
+
+.filter-item label {
+    font-weight: var(--font-weight-medium);
+}

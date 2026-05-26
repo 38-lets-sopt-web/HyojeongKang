@@ -1,0 +1,50 @@
+/* 표 스타일 */
+.expense-table-container {
+    margin: 1rem 5rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    background-color: var(--bg-card);
+    box-shadow: 0 2px 8px var(--shadow-box);
+}
+
+.table-control {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.control-buttons button {
+    padding: 8px 16px;
+    border: none;
+    background-color: var(--btn-primary-bg);
+    color: var(--text-on-dark);
+    border-radius: 6px;
+    font-weight: var(--font-weight-medium);
+}
+
+.expense-table {
+    width: 100%;
+    background-color: var(--bg-card);
+    border-collapse: collapse;
+}
+
+.expense-table thead,
+.expense-table tfoot {
+    background-color: var(--bg-table-header);
+}
+
+.expense-table th,
+.expense-table td {
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.title-cell {
+    text-decoration: underline;
+}
+
+.title-cell:hover {
+    cursor: pointer;
+    color: var(--text-point);
+}
