@@ -21,7 +21,7 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
-    prettierConfig,
+  prettierConfig,
   {
     plugins: { prettier: prettierPlugin },
     rules: {

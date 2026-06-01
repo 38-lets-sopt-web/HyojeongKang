@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { PATH } from './path'
-import MovieListPage from '../pages/MovieListPage'
-import MovieDetailPage from '../pages/MovieDetailPage'
+import MovieListPage from '../pages/movie-list-page'
+import MovieDetailPage from '../pages/movie-detail-page'
 
 export const router = createBrowserRouter([
   {
