@@ -1,4 +1,6 @@
 import type { Movie } from '../types/movie'
+import { useNavigate } from 'react-router-dom'
+import { PATH } from '../routes/path'
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
 
@@ -7,8 +9,13 @@ interface MovieCardProps {
 }
 
 export default function MovieCard({ movie }: MovieCardProps) {
+  const navigate = useNavigate()
+
   return (
-    <div className="cursor-pointer rounded-xl overflow-hidden bg-white hover:scale-105 hover:shadow-2xl transition-all duration-300">
+    <div
+      onClick={() => navigate(PATH.movieDetail(movie.id))}
+      className="cursor-pointer rounded-xl overflow-hidden bg-white hover:scale-105 hover:shadow-2xl transition-all duration-300"
+    >
       <img
         src={`${IMAGE_BASE_URL}${movie.poster_path}`}
         alt={movie.title}
