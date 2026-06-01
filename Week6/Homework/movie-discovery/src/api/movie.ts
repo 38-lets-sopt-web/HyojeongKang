@@ -4,7 +4,7 @@ import type { MovieListResponse, MovieDetail } from '../types/movie'
 // 영화 목록
 export const getMovies = async (page: number): Promise<MovieListResponse> => {
   const { data } = await client.get<MovieListResponse>('/discover/movie', {
-    params: { page },
+    params: { page, sort_by: 'vote_count.desc' },
   })
   return data
 }

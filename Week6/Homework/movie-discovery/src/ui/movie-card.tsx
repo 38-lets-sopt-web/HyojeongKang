@@ -16,11 +16,11 @@ export default function MovieCard({ movie }: MovieCardProps) {
       />
 
       <div className="px-4 py-4 pb-6 flex flex-col gap-2">
-        <h2 className="font-semibold text-sm truncate text-gray-900">
+        <h2 className="font-semibold text-base truncate text-gray-900">
           {movie.title}
         </h2>
-        <p className="text-xs text-gray-500">{movie.release_date}</p>
-        <p className="text-xs text-yellow-500">
+        <p className="text-sm text-gray-500">{movie.release_date}</p>
+        <p className="text-sm text-yellow-500">
           ⭐ {movie.vote_average.toFixed(1)}
         </p>
         <p className="text-xs text-gray-400 line-clamp-2">{movie.overview}</p>
