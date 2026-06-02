@@ -1,6 +1,8 @@
 // pages/movie-detail-page.tsx
 import { useParams, useNavigate } from 'react-router-dom'
 import { useMovieDetail } from '../hooks/use-movie-detail'
+import { useGuestSession } from '../hooks/use-guest-session'
+import StarRating from '../ui/star-rating'
 import { PATH } from '../routes/path'
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
@@ -10,6 +12,7 @@ export default function MovieDetailPage() {
   const { movieId } = useParams()
   const navigate = useNavigate()
   const { data, isPending, isError } = useMovieDetail(Number(movieId))
+  const { guestSessionId } = useGuestSession()
 
   if (isPending) return <p>불러오는 중...</p>
   if (isError) return <p>에러가 발생했습니다.</p>
@@ -117,10 +120,7 @@ export default function MovieDetailPage() {
           </div>
         </div>
 
-        {/* 별점 남기기 자리 (다음에 구현) */}
-        <div className="w-72 bg-white text-gray-900 rounded-xl p-6">
-          <h2 className="font-bold text-lg mb-4">별점 남기기</h2>
-        </div>
+        <StarRating movieId={Number(movieId)} guestSessionId={guestSessionId} />
       </div>
     </div>
   )
