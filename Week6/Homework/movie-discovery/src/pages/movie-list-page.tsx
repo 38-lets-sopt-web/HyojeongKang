@@ -23,7 +23,7 @@ export default function MovieListPage() {
   const movies = data.pages.flatMap((page) => page.results)
 
   return (
-    <div className="min-h-screen px-100 py-10">
+    <div className="min-h-screen px-50 py-10">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-4xl font-bold text-white">🎬 Movie Explorer</h1>
         <select

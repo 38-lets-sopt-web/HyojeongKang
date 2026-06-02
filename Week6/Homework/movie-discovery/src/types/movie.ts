@@ -19,6 +19,12 @@ interface Genre {
   name: string
 }
 
+interface SpokenLanguage {
+  english_name: string
+  iso_639_1: string
+  name: string
+}
+
 export interface MovieDetail {
   id: number
   title: string
@@ -36,4 +42,5 @@ export interface MovieDetail {
   origin_country: string[]
   budget: number
   revenue: number
+  spoken_languages: SpokenLanguage[]
 }
